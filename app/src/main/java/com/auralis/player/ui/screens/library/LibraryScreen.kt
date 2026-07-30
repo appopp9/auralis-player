@@ -96,7 +96,7 @@ fun LibraryScreen(
             )
             AccentIconButton(Icons.Rounded.Search, "Search library", callbacks.onOpenSearch)
             Box {
-                AccentIconButton(Icons.Rounded.Sort, "Sort options") { sortMenuOpen = true }
+                AccentIconButton(Icons.Rounded.Sort, "Sort options", onClick = { sortMenuOpen = true })
                 DropdownMenu(expanded = sortMenuOpen, onDismissRequest = { sortMenuOpen = false }) {
                     SortOrder.entries.forEach { order ->
                         DropdownMenuItem(

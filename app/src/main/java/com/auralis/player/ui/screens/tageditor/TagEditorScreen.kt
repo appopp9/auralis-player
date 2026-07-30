@@ -79,7 +79,7 @@ fun TagEditorScreen(
                 color = colors.textPrimary,
                 modifier = Modifier.weight(1f).padding(start = spacing.sm)
             )
-            AccentIconButton(Icons.Rounded.Save, "Save tags", filled = true) {
+            AccentIconButton(Icons.Rounded.Save, "Save tags", onClick = {
                 onSave(
                     song,
                     TagUpdate(

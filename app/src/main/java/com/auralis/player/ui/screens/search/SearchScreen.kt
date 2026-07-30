@@ -100,10 +100,10 @@ fun SearchScreen(
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 trailingIcon = {
                     if (field.text.isNotEmpty()) {
-                        AccentIconButton(Icons.Rounded.Close, "Clear search", size = 36.dp) {
+                        AccentIconButton(Icons.Rounded.Close, "Clear search", onClick = {
                             field = TextFieldValue("")
                             onQueryChange("")
-                        }
+                        }, size = 36.dp)
                     }
                 }
             )

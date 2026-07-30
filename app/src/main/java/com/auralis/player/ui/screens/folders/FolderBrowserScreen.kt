@@ -84,7 +84,7 @@ fun FolderBrowserScreen(
                 Text("Folders", style = AuralisType.title, color = colors.textPrimary)
                 Text(current, style = AuralisType.bodySmall, color = colors.textSecondary, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            AccentIconButton(Icons.Rounded.CreateNewFolder, "Create folder") { createDialog = true }
+            AccentIconButton(Icons.Rounded.CreateNewFolder, "Create folder", onClick = { createDialog = true })
         }
 
         Row(
@@ -101,13 +101,13 @@ fun FolderBrowserScreen(
             horizontalArrangement = Arrangement.spacedBy(spacing.xs)
         ) {
             if (audioChildren.isNotEmpty()) {
-                AuralisChip(label = "Play folder", selected = true) { onPlayFolder(current) }
-                AuralisChip(label = "Open in library", selected = false) { onOpenLibraryFolder(current) }
+                AuralisChip(label = "Play folder", selected = true, onClick = { onPlayFolder(current) })
+                AuralisChip(label = "Open in library", selected = false, onClick = { onOpenLibraryFolder(current) })
             }
             if (excludedFolders.contains(current)) {
-                AuralisChip(label = "Include again", selected = false) { onIncludeFolder(current) }
+                AuralisChip(label = "Include again", selected = false, onClick = { onIncludeFolder(current) })
             } else {
-                AuralisChip(label = "Exclude", selected = false) { onExcludeFolder(current) }
+                AuralisChip(label = "Exclude", selected = false, onClick = { onExcludeFolder(current) })
             }
         }
 

@@ -74,8 +74,8 @@ fun FavoritesScreen(
             modifier = Modifier.padding(horizontal = spacing.screen, vertical = spacing.xs),
             horizontalArrangement = Arrangement.spacedBy(spacing.sm)
         ) {
-            AuralisChip(label = "Play", selected = true, leadingIcon = Icons.Rounded.PlayArrow) { onPlay(favorites, 0) }
-            AuralisChip(label = "Shuffle", selected = false, leadingIcon = Icons.Rounded.Shuffle) { onShuffle(favorites) }
+            AuralisChip(label = "Play", selected = true, onClick = { onPlay(favorites, 0) }, leadingIcon = Icons.Rounded.PlayArrow)
+            AuralisChip(label = "Shuffle", selected = false, onClick = { onShuffle(favorites) }, leadingIcon = Icons.Rounded.Shuffle)
         }
 
         LazyColumn(contentPadding = contentPadding, modifier = Modifier.fillMaxSize()) {

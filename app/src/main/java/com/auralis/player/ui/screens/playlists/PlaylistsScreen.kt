@@ -69,7 +69,7 @@ fun PlaylistsScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Playlists", style = AuralisType.display, color = colors.textPrimary, modifier = Modifier.weight(1f))
-            AccentIconButton(Icons.Rounded.Add, "New playlist", filled = true) { showCreate = true }
+            AccentIconButton(Icons.Rounded.Add, "New playlist", onClick = { showCreate = true }, filled = true)
         }
 
         LazyColumn(contentPadding = contentPadding, modifier = Modifier.fillMaxSize()) {
@@ -144,15 +144,16 @@ fun PlaylistsScreen(
                                 color = colors.textSecondary
                             )
                         }
-                        AccentIconButton(Icons.Rounded.Edit, "Rename ${playlist.name}", size = 38.dp) {
+                        AccentIconButton(Icons.Rounded.Edit, "Rename ${playlist.name}", onClick = {
                             renameTarget = playlist
-                        }
+                        }, size = 38.dp)
                         AccentIconButton(
                             Icons.Rounded.Delete,
                             "Delete ${playlist.name}",
+                            onClick = { deleteTarget = playlist },
                             size = 38.dp,
                             tint = colors.danger
-                        ) { deleteTarget = playlist }
+                        )
                     }
                 }
             }

@@ -160,9 +160,9 @@ fun NowPlayingScreen(
                         overflow = TextOverflow.Ellipsis
                     )
                 }
-                AccentIconButton(Icons.Rounded.MoreVert, "Track options") {
+                AccentIconButton(Icons.Rounded.MoreVert, "Track options", onClick = {
                     song?.let(callbacks.onSongMenu)
-                }
+                })
             }
 
             Box(
@@ -247,12 +247,15 @@ fun NowPlayingScreen(
                     animationSpec = AuralisTheme.motion.tweenFast(),
                     label = "likeTint"
                 )
+                val popSpec = AuralisTheme.motion.popSpring()
+                val bouncySpec = AuralisTheme.motion.bouncySpring()
+                val softSpec = AuralisTheme.motion.softSpring()
                 LaunchedEffect(isFavorite) {
                     if (isFavorite) {
-                        likeScale.animateTo(1.32f, AuralisTheme.motion.popSpring())
-                        likeScale.animateTo(1f, AuralisTheme.motion.bouncySpring())
+                        likeScale.animateTo(1.32f, popSpec)
+                        likeScale.animateTo(1f, bouncySpec)
                     } else {
-                        likeScale.animateTo(1f, AuralisTheme.motion.softSpring())
+                        likeScale.animateTo(1f, softSpec)
                     }
                 }
                 AccentIconButton(

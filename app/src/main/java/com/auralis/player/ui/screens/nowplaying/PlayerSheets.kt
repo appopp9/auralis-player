@@ -136,13 +136,13 @@ fun QueueSheet(
                                 }
                             }
                         }
-                        AccentIconButton(Icons.Rounded.ArrowUpward, "Move up", size = 34.dp) {
+                        AccentIconButton(Icons.Rounded.ArrowUpward, "Move up", onClick = {
                             if (index > 0) onMove(index, index - 1)
-                        }
-                        AccentIconButton(Icons.Rounded.ArrowDownward, "Move down", size = 34.dp) {
+                        }, size = 34.dp)
+                        AccentIconButton(Icons.Rounded.ArrowDownward, "Move down", onClick = {
                             if (index < queue.lastIndex) onMove(index, index + 1)
-                        }
-                        AccentIconButton(Icons.Rounded.Close, "Remove from queue", size = 34.dp) { onRemove(index) }
+                        }, size = 34.dp)
+                        AccentIconButton(Icons.Rounded.Close, "Remove from queue", onClick = { onRemove(index) }, size = 34.dp)
                     }
                 }
             }
@@ -190,29 +190,29 @@ fun SleepTimerSheet(
 
             FlowRow(horizontalArrangement = Arrangement.spacedBy(spacing.sm)) {
                 listOf(5, 10, 15, 30, 45, 60).forEach { minutes ->
-                    AuralisChip(label = "$minutes min", selected = false) {
+                    AuralisChip(label = "$minutes min", selected = false, onClick = {
                         onStart(minutes)
                         onDismiss()
-                    }
+                    })
                 }
-                AuralisChip(label = "End of track", selected = state.stopAtTrackEnd) {
+                AuralisChip(label = "End of track", selected = state.stopAtTrackEnd, onClick = {
                     onEndOfTrack()
                     onDismiss()
-                }
+                })
             }
 
             Text("Custom: ${custom.toInt()} min", style = AuralisType.label, color = colors.textPrimary)
             Slider(value = custom, onValueChange = { custom = it }, valueRange = 1f..180f)
             Row(horizontalArrangement = Arrangement.spacedBy(spacing.sm)) {
-                AuralisChip(label = "Start custom", selected = true) {
+                AuralisChip(label = "Start custom", selected = true, onClick = {
                     onStart(custom.toInt())
                     onDismiss()
-                }
+                })
                 if (state.active) {
-                    AuralisChip(label = "Cancel timer", selected = false) {
+                    AuralisChip(label = "Cancel timer", selected = false, onClick = {
                         onCancel()
                         onDismiss()
-                    }
+                    })
                 }
             }
             Box(modifier = Modifier.height(spacing.md))
@@ -312,14 +312,14 @@ fun EqualizerSheet(
                             onClick = { onApplyPreset(preset) }
                         )
                     }
-                    AuralisChip(label = "Save current", selected = false) { savePresetDialog = true }
+                    AuralisChip(label = "Save current", selected = false, onClick = { savePresetDialog = true })
                 }
                 if (customPresets.isNotEmpty()) {
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(spacing.xs)) {
                         customPresets.forEach { preset ->
-                            AuralisChip(label = "Delete ${preset.name}", selected = false) {
+                            AuralisChip(label = "Delete ${preset.name}", selected = false, onClick = {
                                 onDeletePreset(preset.id)
-                            }
+                            })
                         }
                     }
                 }
@@ -345,17 +345,17 @@ fun EqualizerSheet(
             )
             FlowRow(horizontalArrangement = Arrangement.spacedBy(spacing.xs)) {
                 if (loop.ready) {
-                    AuralisChip(label = "Save loop", selected = false) { saveLoopDialog = true }
+                    AuralisChip(label = "Save loop", selected = false, onClick = { saveLoopDialog = true })
                     AuralisChip(label = "Clear loop", selected = false, onClick = onClearLoop)
                 }
                 savedLoops.forEach { saved ->
-                    AuralisChip(label = saved.label, selected = false) { onApplyLoop(saved) }
+                    AuralisChip(label = saved.label, selected = false, onClick = { onApplyLoop(saved) })
                 }
             }
             if (savedLoops.isNotEmpty()) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(spacing.xs)) {
                     savedLoops.forEach { saved ->
-                        AuralisChip(label = "Delete ${saved.label}", selected = false) { onDeleteLoop(saved.id) }
+                        AuralisChip(label = "Delete ${saved.label}", selected = false, onClick = { onDeleteLoop(saved.id) })
                     }
                 }
             }
