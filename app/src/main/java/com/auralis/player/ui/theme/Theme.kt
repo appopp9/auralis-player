@@ -177,7 +177,6 @@ object AurumType {
         fontSize = 13.sp,
         fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
         color = AurumTextSecondary,
-        fontFeatureSettings = androidx.compose.ui.text.font.FontFeature("tnum")
     )
 
     /** Larger time display for now-playing screen */
@@ -185,7 +184,6 @@ object AurumType {
         fontSize = 14.sp,
         fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
         color = AurumTextPrimary,
-        fontFeatureSettings = androidx.compose.ui.text.font.FontFeature("tnum")
     )
 }
 
