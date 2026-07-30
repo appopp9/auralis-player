@@ -1,3 +1,4 @@
+import androidx.compose.material3.ExperimentalMaterial3Api
 package com.auralis.player.ui.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
