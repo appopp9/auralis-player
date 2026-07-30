@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.auralis.player.data.prefs.AppSettings
 import com.auralis.player.data.prefs.SettingsRepository
 import com.auralis.player.data.scanner.MediaScanner
-import com.auralis.player.ui.library.LibraryScreen
+import com.auralis.player.ui.navigation.AppNavigation
 import com.auralis.player.ui.theme.AuralisTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 customAccent = settings.customAccent,
                 dynamicColor = settings.dynamicArtworkColor
             ) {
-                LibraryScreen()
+                AppNavigation()
             }
         }
         requestAudioPermissionIfNeeded()
