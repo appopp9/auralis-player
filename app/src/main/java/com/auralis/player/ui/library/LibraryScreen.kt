@@ -114,11 +114,10 @@ fun LibraryScreen(
                 containerColor = Color.Black,
                 contentColor = MaterialTheme.colorScheme.primary,
                 indicator = { tabPositions ->
-                    if (selectedTab.ordinal < tabPositions.size) {
-                        TabRowDefaults.SecondaryIndicator(
-                            Modifier.wrapContentSize(Alignment.BottomStart).padding(horizontal = 60.dp).height(3.dp).clip(RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)).background(AuralisTheme.colors.accent),
-                            height = 3.dp,
-                            color = MaterialTheme.colorScheme.primary
+                                    TabRowDefaults.SecondaryIndicator(
+                                        modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
+                                    )
+                                },
                         )
                     }
                 },
