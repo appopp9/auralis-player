@@ -116,7 +116,7 @@ fun LibraryScreen(
                 indicator = { tabPositions ->
                     if (selectedTab.ordinal < tabPositions.size) {
                         TabRowDefaults.SecondaryIndicator(
-                            modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
+                            Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
                             height = 3.dp,
                             color = MaterialTheme.colorScheme.primary
                         )
