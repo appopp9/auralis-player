@@ -45,7 +45,7 @@ class AbLoopController @Inject constructor(
                 if (current.enabled && current.ready && target.isPlaying) {
                     val position = target.currentPosition
                     if (position >= current.endMs!! || position < current.startMs!! - 500) {
-                        target.seekTo(current.startMs)
+                        target.seekTo(current.startMs!!)
                     }
                 }
             }

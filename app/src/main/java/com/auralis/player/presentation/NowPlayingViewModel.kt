@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -105,7 +106,7 @@ class NowPlayingViewModel @Inject constructor(
             _lyricsLoading.value = true
             val target = musicRepository.songByIdSuspend(songId) ?: playerState.value.currentSong
             _lyrics.value = if (target == null) null else {
-                val settings = kotlinx.coroutines.flow.first(settingsRepository.settings)
+                val settings = settingsRepository.settings.first()
                 lyricsRepository.lyricsFor(target, settings.onlineLyrics && settings.autoSearchLyrics)
             }
             _lyricsLoading.value = false

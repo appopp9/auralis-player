@@ -156,7 +156,7 @@ fun AuralisAppScaffold(
                             isPlaying = playerState.isPlaying,
                             progress = playerState.progress,
                             onExpand = { nowPlayingOpen = true },
-                            onPlayPause = { mainViewModel.player.togglePlayPause() },
+                            onTogglePlay = { mainViewModel.player.togglePlayPause() },
                             onNext = { mainViewModel.player.next() },
                             onPrevious = { mainViewModel.player.previous() }
                         )
@@ -204,7 +204,7 @@ fun AuralisAppScaffold(
                                 isPlaying = playerState.isPlaying,
                                 progress = playerState.progress,
                                 onExpand = { nowPlayingOpen = true },
-                                onPlayPause = { mainViewModel.player.togglePlayPause() },
+                                onTogglePlay = { mainViewModel.player.togglePlayPause() },
                                 onNext = { mainViewModel.player.next() },
                                 onPrevious = { mainViewModel.player.previous() }
                             )

@@ -225,45 +225,4 @@ fun AccentIconButton(
     }
 }
 
-@Composable
-fun EmptyState(
-    icon: ImageVector,
-    title: String,
-    message: String,
-    modifier: Modifier = Modifier,
-    actionLabel: String? = null,
-    onAction: (() -> Unit)? = null
-) {
-    val colors = AuralisTheme.colors
-    val spacing = AuralisTheme.spacing
-    Column(
-        modifier = modifier.padding(spacing.xl),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(spacing.sm)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(64.dp)
-                .clip(CircleShape)
-                .background(colors.accentSoft),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = colors.accent,
-                modifier = Modifier.size(28.dp)
-            )
-        }
-        Text(text = title, style = AuralisType.title, color = colors.textPrimary, textAlign = TextAlign.Center)
-        Text(
-            text = message,
-            style = AuralisType.bodySmall,
-            color = colors.textSecondary,
-            textAlign = TextAlign.Center
-        )
-        if (actionLabel != null && onAction != null) {
-            AuralisChip(label = actionLabel, selected = true, onClick = onAction)
-        }
-    }
-}
+
