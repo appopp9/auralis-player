@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
             AuralisTheme(
                 themeMode = settings.themeMode,
                 accent = settings.accent,
+                customAccent = settings.customAccent,
                 dynamicColor = settings.dynamicArtworkColor
             ) {
                 LibraryScreen()
