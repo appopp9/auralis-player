@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Auralis</string>
+    <string name="widget_compact">Auralis Compact</string>
+    <string name="widget_medium">Auralis Medium</string>
+    <string name="widget_large">Auralis Large</string>
+    <string name="nothing_playing">Nothing playing</string>
+    <string name="cd_artwork">Album artwork</string>
+    <string name="cd_previous">Previous track</string>
+    <string name="cd_play_pause">Play or pause</string>
+    <string name="cd_next">Next track</string>
+</resources>
