@@ -233,8 +233,8 @@ fun SettingsScreen(
                 SliderRow("Treble", settings.trebleBoost.toFloat(), 0f, 1000f) {
                     onUpdate(settings.copy(trebleBoost = it.toInt()))
                 }
-                SliderRow("Volume boost", settings.volumeBoost.toFloat(), 0f, 1000f) {
-                    onUpdate(settings.copy(volumeBoost = it.toInt()))
+                SliderRow("Volume boost", settings.volumeBoost, 0f, 1000f) {
+                    onUpdate(settings.copy(volumeBoost = it))
                 }
                 SliderRow("Balance", settings.balance, -1f, 1f) { onUpdate(settings.copy(balance = it)) }
             }
@@ -293,9 +293,9 @@ fun SettingsScreen(
                 } else {
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(spacing.xs)) {
                         excludedFolders.forEach { path ->
-                            AuralisChip(label = "✕ ${path.substringAfterLast('/')}", selected = false) {
+                            AuralisChip(label = "✕ ${path.substringAfterLast('/')}", selected = false, onClick = {
                                 onIncludeFolder(path)
-                            }
+                            })
                         }
                     }
                 }

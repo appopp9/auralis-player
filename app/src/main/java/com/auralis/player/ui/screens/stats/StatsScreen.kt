@@ -85,7 +85,7 @@ fun StatsScreen(
                             .padding(horizontal = spacing.md)
                     ) {
                         BarChart(
-                            values = stats.dailyMinutes,
+                            values = stats.dailyMinutes.map { it.second.toInt() },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(140.dp)
@@ -98,12 +98,13 @@ fun StatsScreen(
             if (stats.topSongs.isNotEmpty()) {
                 item { SectionHeader(title = "Most played songs") }
                 items(stats.topSongs.size) { index ->
-                    val song = stats.topSongs[index]
+                    val song = stats.topSongs[index].first
+                    val playCount = stats.topSongs[index].second
                     RankRow(
                         rank = index + 1,
                         artworkSongId = song.id,
                         title = song.title,
-                        subtitle = "${song.displayArtist} • ${song.playCount} plays"
+                        subtitle = "${song.displayArtist} • $playCount plays"
                     )
                 }
             }
@@ -114,9 +115,9 @@ fun StatsScreen(
                     val artist = stats.topArtists[index]
                     RankRow(
                         rank = index + 1,
-                        artworkSongId = artist.artworkSongId,
-                        title = artist.name,
-                        subtitle = "${artist.songCount} tracks"
+                        artworkSongId = 0L,
+                        title = artist.first,
+                        subtitle = "${artist.second} tracks"
                     )
                 }
             }
@@ -127,9 +128,9 @@ fun StatsScreen(
                     val album = stats.topAlbums[index]
                     RankRow(
                         rank = index + 1,
-                        artworkSongId = album.artworkSongId,
-                        title = album.name,
-                        subtitle = album.artist
+                        artworkSongId = 0L,
+                        title = album.first,
+                        subtitle = "${album.second}"
                     )
                 }
             }
@@ -141,17 +142,17 @@ fun StatsScreen(
                         modifier = Modifier.padding(horizontal = spacing.screen),
                         verticalArrangement = Arrangement.spacedBy(spacing.xs)
                     ) {
-                        val max = stats.topGenres.maxOf { it.songCount }.coerceAtLeast(1)
+                        val max = stats.topGenres.maxOf { it.second }.coerceAtLeast(1)
                         stats.topGenres.forEach { genre ->
                             Column {
                                 Text(
-                                    "${genre.name} • ${genre.songCount}",
+                                    "${genre.first} • ${genre.second}",
                                     style = AuralisType.bodySmall,
                                     color = colors.textSecondary
                                 )
                                 Box(
                                     modifier = Modifier
-                                        .fillMaxWidth(genre.songCount.toFloat() / max)
+                                        .fillMaxWidth(genre.second.toFloat() / max)
                                         .height(8.dp)
                                         .padding(top = 2.dp)
                                 ) {

@@ -195,9 +195,9 @@ fun SearchScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing.sm)
                     ) {
                         items(state.results.genres, key = { "g-${it.name}" }) { genre ->
-                            AuralisChip(label = "${genre.name} (${genre.songCount})", selected = false) {
+                            AuralisChip(label = "${genre.name} (${genre.songCount})", selected = false, onClick = {
                                 onOpenGenre(genre.name)
-                            }
+                            })
                         }
                     }
                 }
@@ -210,9 +210,9 @@ fun SearchScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing.sm)
                     ) {
                         items(state.playlists, key = { "p-${it.id}" }) { playlist ->
-                            AuralisChip(label = "${playlist.name} (${playlist.songCount})", selected = false) {
+                            AuralisChip(label = "${playlist.name} (${playlist.songCount})", selected = false, onClick = {
                                 onOpenPlaylist(playlist.id)
-                            }
+                            })
                         }
                     }
                 }
@@ -225,9 +225,9 @@ fun SearchScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing.sm)
                     ) {
                         items(state.results.folders, key = { "f-${it.path}" }) { folder ->
-                            AuralisChip(label = "${folder.name} (${folder.songCount})", selected = false) {
+                            AuralisChip(label = "${folder.name} (${folder.songCount})", selected = false, onClick = {
                                 onOpenFolder(folder.path)
-                            }
+                            })
                         }
                     }
                 }

@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -247,9 +248,9 @@ fun NowPlayingScreen(
                     animationSpec = AuralisTheme.motion.tweenFast(),
                     label = "likeTint"
                 )
-                val popSpec = AuralisTheme.motion.popSpring()
-                val bouncySpec = AuralisTheme.motion.bouncySpring()
-                val softSpec = AuralisTheme.motion.softSpring()
+                val popSpec: FiniteAnimationSpec<Float> = AuralisTheme.motion.popSpring()
+                val bouncySpec: FiniteAnimationSpec<Float> = AuralisTheme.motion.bouncySpring()
+                val softSpec: FiniteAnimationSpec<Float> = AuralisTheme.motion.softSpring()
                 LaunchedEffect(isFavorite) {
                     if (isFavorite) {
                         likeScale.animateTo(1.32f, popSpec)
