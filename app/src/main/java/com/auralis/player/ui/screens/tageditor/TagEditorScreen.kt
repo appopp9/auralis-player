@@ -95,7 +95,7 @@ fun TagEditorScreen(
                         lyrics = lyrics.ifBlank { null }
                     )
                 )
-            }
+            })
         }
 
         Column(
