@@ -14,7 +14,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.auralis.player.data.prefs.AppSettings
 import com.auralis.player.data.prefs.SettingsRepository
+import com.auralis.player.data.repository.MusicRepository
 import com.auralis.player.data.scanner.MediaScanner
+import com.auralis.player.playback.PlaybackController
 import com.auralis.player.ui.navigation.AppNavigation
 import com.auralis.player.ui.theme.AuralisTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +33,8 @@ class MainActivity : ComponentActivity() {
 
     @Inject lateinit var settingsRepository: SettingsRepository
     @Inject lateinit var mediaScanner: MediaScanner
+    @Inject lateinit var playbackController: PlaybackController
+    @Inject lateinit var musicRepository: MusicRepository
 
     private val permissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -50,7 +54,10 @@ class MainActivity : ComponentActivity() {
                 customAccent = settings.customAccent,
                 dynamicColor = settings.dynamicArtworkColor
             ) {
-                AppNavigation()
+                AppNavigation(
+                    playbackController = playbackController,
+                    musicRepository = musicRepository
+                )
             }
         }
         requestAudioPermissionIfNeeded()

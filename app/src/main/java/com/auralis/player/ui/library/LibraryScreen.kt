@@ -47,7 +47,10 @@ private enum class LibraryTab(val label: String) {
 fun LibraryScreen(
     viewModel: LibraryViewModel = hiltViewModel(),
     onSongClick: (Song) -> Unit = { viewModel.play(it) },
-    onShuffleAll: () -> Unit = { viewModel.shuffleAll() }
+    onShuffleAll: () -> Unit = { viewModel.shuffleAll() },
+    onArtistClick: (String) -> Unit = {},
+    onAlbumClick: (Long) -> Unit = {},
+    onPlaylistClick: (Long) -> Unit = {}
 ) {
     var selectedTab by remember { mutableStateOf(LibraryTab.SONGS) }
     var searchQuery by remember { mutableStateOf("") }
@@ -148,15 +151,15 @@ fun LibraryScreen(
                 )
                 LibraryTab.ARTISTS -> ArtistsTab(
                     artists = artists,
-                    onArtistClick = { /* TODO: navigate to artist detail */ }
+                    onArtistClick = { artist -> onArtistClick(artist.name) }
                 )
                 LibraryTab.ALBUMS -> AlbumsTab(
                     albums = albums,
-                    onAlbumClick = { /* TODO: navigate to album detail */ }
+                    onAlbumClick = { album -> onAlbumClick(album.id) }
                 )
                 LibraryTab.PLAYLISTS -> PlaylistsTab(
                     playlists = playlists,
-                    onPlaylistClick = { /* TODO: navigate to playlist detail */ }
+                    onPlaylistClick = { playlist -> onPlaylistClick(playlist.id) }
                 )
             }
         }
