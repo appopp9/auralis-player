@@ -114,12 +114,9 @@ fun LibraryScreen(
                 containerColor = Color.Black,
                 contentColor = MaterialTheme.colorScheme.primary,
                 indicator = { tabPositions ->
-                                    TabRowDefaults.SecondaryIndicator(
-                                        modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
-                                    )
-                                },
-                        )
-                    }
+                    TabRowDefaults.SecondaryIndicator(
+                        modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
+                    )
                 },
                 divider = {
                     Divider(
