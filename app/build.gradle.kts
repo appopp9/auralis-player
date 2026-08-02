@@ -31,7 +31,7 @@ android {
     val keystorePropertiesFile = rootProject.file("keystore.properties")
     val keystoreProperties = java.util.Properties().apply {
         if (keystorePropertiesFile.exists()) {
-            keystorePropertiesFile.inputStream().use { load(it) }
+            keystorePropertiesFile.inputStream().use { this.load(it) }
         }
     }
 
